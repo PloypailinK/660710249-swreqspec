@@ -54,3 +54,12 @@
 - ข้อสังเกต: ไม่ได้เริ่มทำใด ๆ ใน task จริง แค่แยกงานจาก spec.md และ plan.md ตามกติกาของโปรเจกต์
 
 ---
+
+## 2569-09-23 09:45 คำสั่ง: /implement T-01
+
+- เครื่องมือ: Copilot ใน Codespaces
+- ไฟล์ที่สร้างหรือแก้: backend/app/config.py, backend/app/db/models.py, backend/app/db/session.py, backend/app/db/migrations/001_init.py, backend/tests/test_T_01_schema.py
+- ผล test: `cd backend && pytest tests/test_T_01_schema.py -q` -> 1 passed in 0.27s
+- สิ่งที่เกือบต้องเดาแต่ถามแทน: ไม่มี เพราะ spec.md, plan.md และ tasks.md ให้ข้อมูลชัดเจนว่าต้องใช้ PostgreSQL และสร้างตาราง `slots`, `bookings`, `audit_logs`
+
+---
