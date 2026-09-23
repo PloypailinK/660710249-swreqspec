@@ -63,3 +63,12 @@
 - สิ่งที่เกือบต้องเดาแต่ถามแทน: ไม่มี เพราะ spec.md, plan.md และ tasks.md ให้ข้อมูลชัดเจนว่าต้องใช้ PostgreSQL และสร้างตาราง `slots`, `bookings`, `audit_logs`
 
 ---
+
+## 2569-09-23 09:55 คำสั่ง: /implement T-09
+
+- เครื่องมือ: Copilot ใน Codespaces
+- ไฟล์ที่สร้างหรือแก้: frontend/src/pages/SlotPicker.jsx, frontend/src/App.jsx, frontend/src/api/client.js, frontend/src/__tests__/T-09.test.jsx
+- ผล test: `cd frontend && npm test -- --run src/__tests__/setup.test.jsx src/__tests__/T-09.test.jsx` -> 2 passed (2)
+- สิ่งที่เกือบต้องเดาแต่ถามแทน: ไม่มี เพราะ spec.md และ plan.md กำหนดชัดว่า UI ต้องใช้ API /slots และ mock ได้ตามสัญญา API
+
+---
