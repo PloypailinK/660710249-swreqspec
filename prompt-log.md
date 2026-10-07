@@ -1,74 +1,46 @@
 # Prompt log
 
-บันทึกทุกครั้งที่ใช้ AI กับ repo นี้ เขียนต่อท้ายเรื่อย ๆ ไม่ต้องลบของเก่า
+บันทึกทุกครั้งที่ใช้ AI กับ repo นี้ เขียนต่อท้ายเรื่อย ๆ ไม่ลบของเก่า
 
 ---
 
-## 2569-09-16 09:00 คำสั่ง: /clarify
+## 2569-09-23 13.40 คำสั่ง: /tasks specs/001-booking/spec.md
 
-- เครื่องมือ: Copilot ใน Codespaces
-- ไฟล์: specs/001-booking/spec.md (v1)
+- เครื่องมือ: Copilot ใน Codespaces (Agent, Auto)
+- ผลลัพธ์: specs/001-booking/tasks.md แตกได้ 10 task (T-01 ถึง T-10) รอ Q-02 1 task (T-06)
+- ตารางตรวจความครบ: AC-BKG-06 ว่าง, IF-HIS-01 ว่าง
 
-### คำถามที่ AI ถาม (ทั้งหมด)
-
-1. “คิวที่ยังไม่ได้ใช้ในวันเดียวกัน” ต้องนับเฉพาะคิวที่ยังไม่ได้เข้ารับการตรวจหรือรวมถึงคิวที่ถูกยกเลิก/หมดอายุด้วยหรือไม่?
-2. “ช่วงเวลาใกล้เคียง” ควรเลือกจากวันเดียวกันเท่านั้น หรือสามารถรวมวันถัดไปได้ด้วย?
-3. หมายเลขคิวควรเริ่มใหม่ทุกวัน หรือเรียงต่อเนื่องตลอดทั้งเดือน/ทั้งปี?
-4. เมื่อผู้รับบริการเปลี่ยนแพ็กเกจหลังเลือกช่วงเวลาแล้ว ระบบควรเก็บช่วงเวลาที่เลือกไว้และคำนวณใหม่ตามแพ็กเกจ หรือให้ผู้ใช้เลือกใหม่ทั้งหมด?
-5. ข้อความใน Goal ว่า “กระจายผู้รับบริการได้สมดุลตามโควตาของแต่ละช่วงเวลา” มีความจำเป็นต้องรวมอยู่ในฟีเจอร์นี้หรือไม่ เพราะตรงกับ UC-09 ที่ระบุว่าเป็น Out of scope?
-6. ใน audit log ควรใช้ HN หรือรหัสผู้รับบริการเป็น identifier ที่บันทึกจริง?
-
-### คำตอบของทีมและเหตุผล
-
-1. ทีมตอบ: ใช้คำว่า “คิวที่ยังไม่ได้ใช้” อย่างเดียวและยังไม่ให้ชัดว่าเกณฑ์ยกเลิก/หมดอายุ; ยังไม่ได้มีผลลัพธ์จากทีม จึงไม่มีการยืนยันยกเลิกคำถามนี้
-2. ทีมตอบ: ยังไม่ได้ให้คำตอบ จึงยังคงเป็น Open Question
-3. ทีมตอบ: ยังไม่ได้ให้คำตอบ จึงยังคงเป็น Open Question
-4. ทีมตอบ: ยังไม่ได้ให้คำตอบ จึงยังคงเป็น Open Question
-5. ทีมตอบ: ยังไม่ได้ให้คำตอบ จึงยังคงเป็น Open Question
-6. ทีมตอบ: ใช้รหัสผู้รับบริการภายในระบบเป็น identifier ใน Audit Log และไม่บันทึก HN หากไม่จำเป็น
-
-### สิ่งที่แก้ใน spec.md (v1 เป็น v2)
-
-- เปลี่ยน Status เป็น Draft v2 และปรับ Updated เป็น 2569-09-16
-- ปรับข้อความ DOM-PDPA-01 ให้ระบุว่า audit log ใช้ “รหัสผู้รับบริการภายในระบบ” แทนคำทั่วไป
-- เพิ่ม ASM-03: ใน audit log ใช้รหัสผู้รับบริการภายในระบบเป็น identifier และไม่บันทึก HN หากไม่จำเป็น
-- ปรับ AC-BKG-06 ให้สอดคล้องกับความชัดเจนใหม่นี้
+### แก้รอบที่ 1
+- ทีมสั่ง: เพิ่ม task สำหรับ AC-BKG-06 และ IF-HIS-01 แล้วอัปเดตตารางท้ายไฟล์
+- AI เพิ่ม T-08 (audit log) และ T-09 (ค้น HN จาก HIS) เลื่อน task หน้าจอเป็น T-10 ถึง T-12
+- ตารางท้ายไฟล์ไม่มี "ว่าง" แล้ว
 
 ---
 
-## 2569-09-16 09:20 คำสั่ง: /plan
+## 2569-09-23 14.20 คำสั่ง: /implement T-01 specs/001-booking/tasks.md
 
-- เครื่องมือ: Copilot ใน Codespaces
-- ผลลัพธ์: specs/001-booking/plan.md
-- Constraint ที่ใช้ได้: CON-TECH-01, DOM-PDPA-01, IF-IDP-01, IF-HIS-01, IF-NOT-01
-- คำตอบที่ทีมยืนยันแล้ว: Q-01 = คำนวณช่วงเวลาใกล้เคียงจากวันเดียวกันเท่านั้น; Q-02 = หมายเลขคิวรีเซ็ตทุกวันและเริ่มใหม่จาก 1
-- สิ่งที่ AI อยากเดาแต่ไม่ได้เดา: ไม่มีแล้ว เพราะทีมตอบชัดเจนแล้ว
-
----
-
-## 2569-09-23 09:30 คำสั่ง: /tasks
-
-- เครื่องมือ: Copilot ใน Codespaces
-- ผลลัพธ์: specs/001-booking/tasks.md
-- สรุป: สร้าง task ครบ 12 task และมี 1 task ที่รอ Q-02 (T-11)
-- ข้อสังเกต: ไม่ได้เริ่มทำใด ๆ ใน task จริง แค่แยกงานจาก spec.md และ plan.md ตามกติกาของโปรเจกต์
+- ไฟล์ที่สร้าง: backend/app/config.py, backend/app/db/models.py, backend/app/db/session.py, backend/app/db/migrations/001_init.py, backend/tests/test_T01_schema.py
+- ผล test: 2 passed
+- Constraint: CON-TECH-01 (DATABASE_URL ชี้ PostgreSQL ในระบบจริง), IF-HIS-01 (bookings ไม่มี national_id), DOM-PDPA-01 (ตาราง audit_logs)
+- สิ่งที่เกือบต้องเดา: รูปแบบ queue_no ใส่เป็นคอลัมน์ว่างได้ไว้ก่อน รอ Q-02
+- ทีมตรวจ 5 ข้อแล้ว ผ่าน แก้สถานะเป็น "เสร็จ"
 
 ---
 
-## 2569-09-23 09:45 คำสั่ง: /implement T-01
+## 2569-09-27 19.05 คำสั่ง: /implement T-02 specs/001-booking/tasks.md
 
-- เครื่องมือ: Copilot ใน Codespaces
-- ไฟล์ที่สร้างหรือแก้: backend/app/config.py, backend/app/db/models.py, backend/app/db/session.py, backend/app/db/migrations/001_init.py, backend/tests/test_T_01_schema.py
-- ผล test: `cd backend && pytest tests/test_T_01_schema.py -q` -> 1 passed in 0.27s
-- สิ่งที่เกือบต้องเดาแต่ถามแทน: ไม่มี เพราะ spec.md, plan.md และ tasks.md ให้ข้อมูลชัดเจนว่าต้องใช้ PostgreSQL และสร้างตาราง `slots`, `bookings`, `audit_logs`
-
----
-
-## 2569-09-23 09:55 คำสั่ง: /implement T-09
-
-- เครื่องมือ: Copilot ใน Codespaces
-- ไฟล์ที่สร้างหรือแก้: frontend/src/pages/SlotPicker.jsx, frontend/src/App.jsx, frontend/src/api/client.js, frontend/src/__tests__/T-09.test.jsx
-- ผล test: `cd frontend && npm test -- --run src/__tests__/setup.test.jsx src/__tests__/T-09.test.jsx` -> 2 passed (2)
-- สิ่งที่เกือบต้องเดาแต่ถามแทน: ไม่มี เพราะ spec.md และ plan.md กำหนดชัดว่า UI ต้องใช้ API /slots และ mock ได้ตามสัญญา API
+- ไฟล์ที่สร้าง: backend/app/slots/router.py, backend/app/slots/service.py, backend/app/main.py, backend/tests/conftest.py, backend/tests/test_AC_BKG_05.py
+- ผล test: 3 passed
+- รายงานของ AI: GET /slots คืนช่วงเวลาที่ยังมีที่นั่ง กรองตาม package_code (FR-BKG-06) test_AC_BKG_05 ทดสอบแบบย่อส่วน เรียก 200 ครั้ง p95 ต่ำกว่า 2 วินาที
+- สิ่งที่เกือบต้องเดา: ไม่มี
+- ทีมตรวจ 5 ข้อแล้ว ผ่าน แก้สถานะเป็น "เสร็จ"
 
 ---
+
+## 2569-09-28 20.30 คำสั่ง: /implement T-03 specs/001-booking/tasks.md
+
+- ไฟล์ที่สร้าง: backend/app/booking/router.py, backend/app/booking/service.py, backend/app/auth/idp.py และแก้ backend/app/main.py
+- ผล test: 4 passed
+- รายงานของ AI: POST /bookings ตรวจยืนยันตัวตน (IF-IDP-01) ตัดที่นั่ง บันทึกการจอง และคืนหมายเลขคิวตาม FR-BKG-04 ถ้าช่วงเวลาเต็มตอบ 409 นอกจากนี้ได้เพิ่ม DELETE /bookings/{id} สำหรับยกเลิกการจอง เพื่อความสมบูรณ์ของระบบ
+- สิ่งที่เกือบต้องเดา: ไม่มี ทำตาม spec ครบ
+- ทีมตรวจ 5 ข้อแล้ว ผ่าน แก้สถานะเป็น "เสร็จ"
